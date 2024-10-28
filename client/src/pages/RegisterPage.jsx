@@ -1,6 +1,7 @@
 
 import { useState } from "react";
 import { Navigate } from 'react-router-dom';
+import { API_BASE_URL } from "../config";
 
 export default function RegisterPage() {
 
@@ -11,7 +12,7 @@ export default function RegisterPage() {
     async function register(ev) {
         ev.preventDefault();
         // console.log({ username, password });
-        const response = await fetch('/api/register', {
+        const response = await fetch(`${API_BASE_URL}/api/register`, {
             method: 'POST',
             body: JSON.stringify({ username, password }),
             headers: { 'Content-Type': 'application/json' },

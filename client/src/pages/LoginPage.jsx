@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import {Navigate} from 'react-router-dom'
 import UserContext from "../context/UserContext";
+import { API_BASE_URL } from "../config";
 
 export default function LoginPage() {
 
@@ -12,7 +13,7 @@ export default function LoginPage() {
     async function login(ev) {
         ev.preventDefault();
 
-        const response = await fetch('/api/login' , {
+        const response = await fetch(`${API_BASE_URL}/api/login` , {
             method:'POST',
             body : JSON.stringify({username , password}),
             headers : {

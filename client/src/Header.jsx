@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import UserContext from "./context/UserContext";
+import { API_BASE_URL } from "./config";
 
 
 
@@ -14,7 +15,7 @@ export default function () {
     //if valid, set username.
     useEffect(() => {
         const getProfile = async () => {
-            const response = await fetch('/api/profile', {
+            const response = await fetch(`${API_BASE_URL}/api/profile`, {
                 credentials: 'include'
             })
             // console.log(response);
@@ -29,7 +30,7 @@ export default function () {
     }, [])
 
     async function logout(){
-        const response = fetch('/api/logout' , {
+        const response = fetch(`${API_BASE_URL}/api/logout` , {
             method : 'POST',
         })
         setUserInfo(null)

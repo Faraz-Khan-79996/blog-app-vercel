@@ -4,6 +4,7 @@ import { formatISO9075 } from "date-fns";
 import UserContext from "../context/UserContext";
 import { Link } from 'react-router-dom';
 import ClockLoader from "react-spinners/ClockLoader";
+import { API_BASE_URL } from "../config";
 
 export default function PostPage(params) {
 
@@ -25,7 +26,7 @@ export default function PostPage(params) {
     useEffect(() => {
         //get request to server with post id.
         setLoading(prev => true)
-        fetch(`/api/post/${id}`)
+        fetch(`${API_BASE_URL}/api/post/${id}`)
             .then(response => {
                 return response.json()
             })
@@ -43,7 +44,7 @@ export default function PostPage(params) {
     async function deletePost(ev) {
         ev.preventDefault()
         setLoading(prev => true)
-        fetch('/api/delete/' + id, {
+        fetch(`${API_BASE_URL}/api/delete/` + id, {
             method: 'DELETE',
             credentials: 'include',
         })

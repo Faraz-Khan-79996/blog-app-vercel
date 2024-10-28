@@ -3,6 +3,7 @@ import Editor from "../Editor";
 import { useParams } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 import ClockLoader from "react-spinners/ClockLoader";
+import { API_BASE_URL } from "../config";
 
 export default function EditPost() {
 
@@ -26,7 +27,7 @@ export default function EditPost() {
 
     useEffect(()=>{
         setLoading(prev => true)
-        fetch(`/api/post/${id}`)
+        fetch(`${API_BASE_URL}/api/post/${id}`)
         .then(response => response.json())
         .then(postInfo => {
             setLoading(prev => false)
@@ -52,7 +53,7 @@ export default function EditPost() {
         // console.log(files);
         // console.log(data);
         setLoading(prev => true)
-        await fetch('/api/post' , {
+        await fetch(`${API_BASE_URL}/api/post` , {
             method:'PUT',
             body:data,
             credentials : 'include',

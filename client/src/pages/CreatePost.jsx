@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import Editor from '../Editor';
 import ClockLoader from "react-spinners/ClockLoader";
+import { API_BASE_URL } from '../config';
 
 export default function CreatePost() {
 
@@ -30,7 +31,7 @@ export default function CreatePost() {
 
         setLoading(true)
         //console.log(files);//array
-        const response = await fetch('/api/post', {
+        const response = await fetch(`${API_BASE_URL}/api/post`, {
             method: 'POST',
             // body: JSON.stringify({ })
             body: data,

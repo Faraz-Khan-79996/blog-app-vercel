@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import ClockLoader from "react-spinners/ClockLoader";
 import Post from "../Post";
+import { API_BASE_URL } from "../config";
 
 export default function IndexPage() {
 
@@ -16,7 +17,7 @@ export default function IndexPage() {
 
     useEffect(()=>{
         setLoading(prev => true)
-        fetch('/api/post')
+        fetch(`${API_BASE_URL}/api/post`)
         .then(response =>{
             return response.json()
         })
